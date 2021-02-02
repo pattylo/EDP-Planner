@@ -75,7 +75,7 @@ void run_yolo::findwhichboundingboxrocks(vector<cv::Mat> &netOutput, cv::Mat &fr
     int indicator =0;
     for(auto &output: netOutput)//read every layer's output, the auto variable of "output" indicates 3 different layer, as per the architecture of yolo
     {
-        for(int i=0;i<output.rows;i++)//now, for every layer's output, there will be 17328*10, 4332*10, 1083*10 numbers, it holds the very info of every predicted bounding boxes
+        for(int i=0;i<output.rows;i++)//now, for every layer's output, there will be 17328*(5+class_number), 4332*(5+class_number), 1083*(5+class_number) numbers, it holds the very info of every predicted bounding boxes
         {
             auto isthereanobjectconfidence = output.at<float> (i,4);//save the confidence of every bounding box
             if(isthereanobjectconfidence>set_confidence)//this does: assess whether there is an object in this bounding box
