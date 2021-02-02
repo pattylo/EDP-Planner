@@ -16,14 +16,14 @@
 #include <string>
 
 using namespace std;
-static cv::Mat rbg_ptr;
+static cv::Mat frame;
 
 static cv::String weightpath ="/home/patrick/camera_ws/src/camera/src/include/yolov4_lais.weights";
 static cv::String cfgpath ="/home/patrick/camera_ws/src/camera/src/include/yolov4_lais.cfg";
 static cv::String classnamepath = "/home/patrick/camera_ws/src/camera/src/include/obj.names";
 static run_yolo Yolonet(cfgpath, weightpath, classnamepath, float(0.1));
 
-void imageCb(const sensor_msgs::ImageConstPtr & depth)
+void depthcallback(const sensor_msgs::ImageConstPtr & depth)
 {
     //ROS_INFO("Image received");
     cv_bridge::CvImageConstPtr depth_ptr;
@@ -41,11 +41,11 @@ void imageCb(const sensor_msgs::ImageConstPtr & depth)
 
 }
 
-void imagecbb(const sensor_msgs::CompressedImageConstPtr &msg)
+void imagecallback(const sensor_msgs::CompressedImageConstPtr &image)
 {
     try
     {
-        rbg_ptr = cv::imdecode(cv::Mat(msg->data),1);
+        frame = cv::imdecode(cv::Mat(image->data),1);
 
     }
     catch (cv_bridge::Exception& e)
@@ -53,8 +53,8 @@ void imagecbb(const sensor_msgs::CompressedImageConstPtr &msg)
         ROS_ERROR("cv_bridge exception: %s", e.what());
         return;
     }
-    Yolonet.rundarknet(rbg_ptr);
-    Yolonet.display(rbg_ptr);
+    Yolonet.rundarknet(frame);
+    Yolonet.display(frame);
 }
 
 int main(int argc, char** argv)
@@ -63,8 +63,8 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "trial");
     ros::NodeHandle nh;
-//    ros::Subscriber sub = nh.subscribe("/camera/aligned_depth_to_color/image_raw", 1, imageCb);
-    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::CompressedImage>("camera/color/image_raw/compressed", 1, imagecbb);
+//    ros::Subscriber sub = nh.subscribe("/camera/aligned_depth_to_color/image_raw", 1, depthcallback);
+    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::CompressedImage>("camera/color/image_raw/compressed", 1, imagecallback);
 
     cout<<"end"<<endl;
 
