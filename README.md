@@ -1,4 +1,4 @@
-# Object-seaching-navigation-system
+# An Autonomous Object Searching UAV system
 The project has developed a object searching system that adopts a image-process-technique-based path planning method as well as a learning based object searching module.<br/>
 <br/>
 Some conducted experiment could be reviewed @:<br/>
