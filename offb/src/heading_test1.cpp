@@ -11,6 +11,7 @@ based upon the given offboard instance*/
 #include <sstream>
 #include <cmath>
 #include <eigen3/Eigen/Dense>
+#include "include/movement.h"
 
 using namespace std;
 
@@ -29,13 +30,15 @@ void state_cb(const mavros_msgs::State::ConstPtr& msg){
     current_state = *msg;
 }
 
-double uavx,uavy,uavz;
+double uavx,uavy,uavz,uavw;
 
 
 void getposition(const geometry_msgs::PoseStamped::ConstPtr& pose){
     uavx = pose->pose.position.x;
     uavy = pose->pose.position.y;
     uavz = pose->pose.position.z;
+    uavw = pose->pose.orientation.w;
+
 }
 
 int main(int argc, char **argv)

@@ -12,6 +12,15 @@ find_package(catkin REQUIRED COMPONENTS
   mavros_msgs
   roscpp
   std_msgs
+  cv_bridge
+  image_transport
+  sensor_msgs
+)
+
+find_package(OpenCV 4 REQUIRED)
+
+catkin_package(
+
 )
 
 ## System dependencies are found with CMake's conventions
@@ -119,6 +128,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -150,27 +160,66 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-add_executable(str_ver1 src/str_ver1.cpp)
+#add_executable(str_ver1 src/str_ver1.cpp)
 
-target_link_libraries(str_ver1
-   ${catkin_LIBRARIES})
-
-
-add_executable(cir_ver1 src/cir_ver1.cpp)
-
-target_link_libraries(cir_ver1
-   ${catkin_LIBRARIES})
+#target_link_libraries(str_ver1
+#   ${catkin_LIBRARIES})
 
 
-add_executable(eight_ver1 src/eight_ver1.cpp)
+#add_executable(cir_ver1 src/cir_ver1.cpp)
 
-target_link_libraries(eight_ver1
-   ${catkin_LIBRARIES})
+#target_link_libraries(cir_ver1
+#   ${catkin_LIBRARIES})
 
 
-add_executable(heading_test1 src/heading_test1.cpp)
+#add_executable(eight_ver1 src/eight_ver1.cpp)
+
+#target_link_libraries(eight_ver1
+#   ${catkin_LIBRARIES})
+
+
+add_executable(heading_test1
+    src/heading_test1.cpp
+    src/include/movement.cpp
+    src/include/run_yolo.cpp)
 
 target_link_libraries(heading_test1
+   ${catkin_LIBRARIES})
+
+add_executable(path
+    src/path.cpp
+    src/include/movement.cpp
+    src/include/run_yolo.cpp)
+
+target_link_libraries(path
+   ${OpenCV_LIBRARIES}
+   ${catkin_LIBRARIES})
+
+add_executable(traj
+    src/traj.cpp
+    src/include/movement.cpp
+    src/include/run_yolo.cpp)
+
+target_link_libraries(traj
+   ${OpenCV_LIBRARIES}
+   ${catkin_LIBRARIES})
+
+add_executable(track
+    src/track.cpp
+    src/include/movement.cpp
+    src/include/run_yolo.cpp)
+
+target_link_libraries(track
+   ${OpenCV_LIBRARIES}
+   ${catkin_LIBRARIES})
+
+add_executable(camera
+    src/camera.cpp
+    src/include/movement.cpp
+    src/include/run_yolo.cpp)
+
+target_link_libraries(camera
+   ${OpenCV_LIBRARIES}
    ${catkin_LIBRARIES})
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

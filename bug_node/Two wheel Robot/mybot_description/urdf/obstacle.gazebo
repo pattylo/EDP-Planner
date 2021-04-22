@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="obstacle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<gazebo reference="box">
+    <static>true</static>
+</gazebo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</robot>
