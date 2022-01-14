@@ -29,6 +29,6 @@ several flight tests under the VICON arena.
 The findings of the study demonstrate the effectiveness and reliability of such autonomous 
 navigation system: in which the object searching system is capable to precisely search and 
 locate target in an unknown environment with a collision-free flight. Meanwhile, the object 
-tracking system is able to consistently track and follow the movement of the target object. </br>
+tracking system is able to consistently track and follow the movement of the target object. </br></br>
 Keywords: UAV; autonomous object-searching; autonomous object-tracking 
 </div>
