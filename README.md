@@ -1,6 +1,6 @@
 # An Autonomous Object Searching UAV system
 <div align="justify">
-This project serves as my final year project. We have developed two modules: for both static object searching and dynamic object tracking. In particular, this repo is named after the EDP-Planner of the static object searching module. For tracking, please refer to this <a href="https://github.com/pattylo/AUTO">repo</a>. The project has developed a object searching system that adopts a image-process-technique-based path planning. </div>
+This project serves as my final year project, and we have developed two modules: for both static object searching and dynamic object tracking. In particular, this repo is named after the EDP-Planner of the static object searching module. For tracking, please refer to this <a href="https://github.com/pattylo/AUTO">repo</a>. </div>
 (EDP-planner) method as well as a learning based object searching module.<br/>
 <br/>
 Some conducted experiment could be reviewed @:<br/>
